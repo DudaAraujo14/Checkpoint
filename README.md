@@ -84,7 +84,53 @@ Criar um **sistema inteligente de cogestão urbana**, onde cidadãos e máquinas
 | Monitoramento contínuo            | Azure Monitor, Log Analytics                          |
 
 ---
+## Diagrama de Arquitetura
+flowchart TD
+    Citizen((👤 Cidadão)) -->|Reporta problema| Frontend[🌐 Next.js + Leaflet]
+    Frontend -->|API REST| Backend[⚙️ FastAPI Backend]
+    Backend -->|Armazena dados| DB[(🗄️ PostgreSQL)]
+    Backend -->|Classificação e sugestões| AI[🧠 OpenAI API]
+    Backend -->|Eventos| Kafka[(📡 Kafka - simulado)]
+    Backend -->|Métricas| Monitoring[📊 Prometheus + Grafana]
+    Backend -->|Infra| Azure[(☁️ Azure Cloud AKS + App Services)]
+    Prefeitura((🏛️ Prefeitura)) -->|Dashboards| Monitoring
+    Prefeitura -->|Acessa alertas| Frontend
+---
 
+## Estrutura do MVP (projeto inicial)
+civixmind/
+│── backend/
+│   ├── app/
+│   │   ├── main.py        # FastAPI
+│   │   ├── models.py      # Modelos ORM
+│   │   ├── routes.py      # Rotas de API
+│   │   └── ai.py          # Integração OpenAI
+│   └── Dockerfile
+│
+│── frontend/
+│   ├── pages/
+│   │   ├── index.js       # Página inicial com mapa
+│   │   └── report.js      # Formulário de reportar problema
+│   ├── components/
+│   │   └── Map.js         # Leaflet mapa interativo
+│   └── Dockerfile
+│
+│── infra/
+│   ├── main.tf            # Terraform infra Azure
+│   ├── variables.tf
+│   └── outputs.tf
+│
+│── database/
+│   └── schema.sql         # Estrutura PostgreSQL
+│
+│── monitoring/
+│   ├── prometheus.yml
+│   └── grafana_dashboards.json
+│
+│── README.md
+│── docker-compose.yml
+
+---
 ## 🧱 Rascunho da Solução
 
 1. Cidadãos reportam problemas urbanos via app ou site.
