@@ -2,14 +2,13 @@
 
 **Turma:** 2TDSPS-2025  
 **Grupo:** FutureOps Lab  
-**Repositório:** (https://github.com/DudaAraujo14/Checkpoint.git)
+**Repositório:** [https://github.com/DudaAraujo14/Checkpoint.git](https://github.com/DudaAraujo14/Checkpoint.git)
 
 ## 👥 Integrantes do Grupo
 
 | Nome Completo     | RM      | Função       |
 |------------------ |---------|--------------|
 | Maria Eduarda     | 560944  | DEV HOM PRD  |
-
 
 ---
 
@@ -84,7 +83,10 @@ Criar um **sistema inteligente de cogestão urbana**, onde cidadãos e máquinas
 | Monitoramento contínuo            | Azure Monitor, Log Analytics                          |
 
 ---
-## Diagrama de Arquitetura
+
+## 🗺️ Diagrama de Arquitetura
+
+```mermaid
 flowchart TD
     Citizen((👤 Cidadão)) -->|Reporta problema| Frontend[🌐 Next.js + Leaflet]
     Frontend -->|API REST| Backend[⚙️ FastAPI Backend]
@@ -95,8 +97,7 @@ flowchart TD
     Backend -->|Infra| Azure[(☁️ Azure Cloud AKS + App Services)]
     Prefeitura((🏛️ Prefeitura)) -->|Dashboards| Monitoring
     Prefeitura -->|Acessa alertas| Frontend
----
-
+```
 ## Estrutura do MVP (projeto inicial)
 civixmind/
 │── backend/
@@ -120,100 +121,126 @@ civixmind/
 │   ├── variables.tf
 │   └── outputs.tf
 │
-│── database/
-│   └── schema.sql         # Estrutura PostgreSQL
-│
 │── monitoring/
 │   ├── prometheus.yml
 │   └── grafana_dashboards.json
 │
 │── README.md
 │── docker-compose.yml
-
 ---
-## 🧱 Rascunho da Solução
 
-1. Cidadãos reportam problemas urbanos via app ou site.
-2. A IA (via OpenAI) analisa, classifica e sugere ações.
-3. A prefeitura recebe alertas com criticidade e recomendações.
-4. Dados são cruzados com APIs públicas e sensores urbanos.
-5. Dashboards mostram a saúde urbana em tempo real.
+##🧱 Rascunho da Solução
 
+Cidadãos reportam problemas urbanos via app ou site.
+
+A IA (via OpenAI) analisa, classifica e sugere ações.
+
+A prefeitura recebe alertas com criticidade e recomendações.
+
+Dados são cruzados com APIs públicas e sensores urbanos.
+
+Dashboards mostram a saúde urbana em tempo real.
 ---
 
 ## 🔑 Recursos-Chave
 
-- ☁️ **Microsoft Azure** – App Service, AKS, PostgreSQL, Monitor  
-- 🐳 **Docker + Kubernetes** – Containerização e orquestração  
-- 🧠 **OpenAI GPT-4** – IA generativa para análise urbana  
-- ⚙️ **Terraform** – Provisionamento automático da infraestrutura  
-- 🐍 **Python (FastAPI)** – Backend leve e escalável  
-- 🌐 **Next.js + Leaflet.js** – Frontend moderno com mapas interativos  
-- 📈 **Grafana / Prometheus** – Dashboards de métricas urbanas  
-- 🛰️ **Kafka (simulado)** – Eventos urbanos em tempo real
+☁️ Microsoft Azure – App Service, AKS, PostgreSQL, Monitor
 
+🐳 Docker + Kubernetes – Containerização e orquestração
+
+🧠 OpenAI GPT-4 – IA generativa para análise urbana
+
+⚙️ Terraform – Provisionamento automático da infraestrutura
+
+🐍 Python (FastAPI) – Backend leve e escalável
+
+🌐 Next.js + Leaflet.js – Frontend moderno com mapas interativos
+
+📈 Grafana / Prometheus – Dashboards de métricas urbanas
+
+🛰️ Kafka (simulado) – Eventos urbanos em tempo real
 ---
 
-## 🎥 Vídeo Explicativo
+## 🐳 Docker Compose
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
 
-📺 [Assista à apresentação da solução CivixMind](https://www.youtube.com/watch?v=civixmind-demo)
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
 
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: civixmind
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
 ---
 
-## 💻 Código-Fonte do MVP
+## 🧮 Versões, Como Rodar e Próximos Passos
 
-📂 [Repositório com código-fonte e infraestrutura](https://github.com/DudaAraujo14/Checkpoint.git)
-
+Versões:
+| Tecnologia | Versão |
+| ---------- | ------ |
+| Python     | 3.11   |
+| FastAPI    | 0.110  |
+| Node.js    | 20.x   |
+| Next.js    | 13.x   |
+| PostgreSQL | 15     |
+| Docker     | 24     |
+| Terraform  | 1.7.x  |
+| Azure CLI  | 2.52   |
+| Prometheus | 2.48   |
+| Grafana    | 10.x   |
 ---
 
-## 🗄️ Banco de Dados
+## Como Rodar Localmente:
 
-- **Tipo:** Relacional (PostgreSQL)  
-- **Modelo de Dados:**
-  - `usuarios (id, nome, tipo, localização)`
-  - `ocorrencias (id, tipo, descrição, localização, status)`
-  - `respostas_ia (ocorrencia_id, sugestao, urgencia)`
-  - `eventos (timestamp, tipo, valor, fonte)`
-  - `logs_acao (usuario, ação, data_hora)`
+1.Clone o repositório
+git clone https://github.com/DudaAraujo14/Checkpoint.git
+cd Checkpoint
 
----
+2.Suba os serviços com Docker 
+docker-compose up --build
 
-## 🧮 Versões dos Softwares
+3.Acesse:
 
-| Tecnologia     | Versão     |
-|----------------|------------|
-| Python         | 3.11       |
-| FastAPI        | 0.110      |
-| Node.js        | 20.x       |
-| Next.js        | 13.x       |
-| PostgreSQL     | 15         |
-| Docker         | 24         |
-| Terraform      | 1.7.x      |
-| Azure CLI      | 2.52       |
-| Prometheus     | 2.48       |
-| Grafana        | 10.x       |
+Frontend → http://localhost:3000
 
----
+Backend (API) → http://localhost:8000/docs
 
-## 🚀 Próximos Passos
+Banco → localhost:5432
 
-- Criar app mobile (Flutter) com geolocalização  
-- Realizar testes reais com cidades piloto (ex: bairros de SP)  
-- Treinar modelo de IA com dados históricos de problemas urbanos  
-- Expandir para outras áreas: meio ambiente, saúde pública, segurança  
-- Abrir a API para desenvolvedores GovTech  
+##📚 Referências
 
----
+[OpenAI API Documentation](https://platform.openai.com/docs?utm_source=chatgpt.com)
 
-## 📚 Referências
+[FastAPI Documentation](https://fastapi.tiangolo.com/?utm_source=chatgpt.com)
 
-- [OpenAI API Documentation](https://platform.openai.com/docs)  
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)  
-- [Terraform Azure Provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)  
-- [Leaflet Maps](https://leafletjs.com/)  
-- [Grafana Docs](https://grafana.com/docs/)  
-- [Prometheus Docs](https://prometheus.io/docs/introduction/overview/)  
-- [Azure for Smart Cities](https://azure.microsoft.com/en-us/industries/government/smart-cities/)  
-- [GitHub Actions Docs](https://docs.github.com/en/actions)
+[Terraform Azure Provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs?utm_source=chatgpt.com)
 
----
+[Leaflet Maps](https://leafletjs.com/?utm_source=chatgpt.com)
+
+[Grafana Docs](https://grafana.com/docs/?utm_source=chatgpt.com)
+
+[Prometheus Docs](https://prometheus.io/docs/introduction/overview/?utm_source=chatgpt.com)
+
+[Azure for Smart Cities](https://azure.microsoft.com/en-us/industries/government/smart-cities/?utm_source=chatgpt.com)
+
+[GitHub Actions Docs](https://docs.github.com/en/actions?utm_source=chatgpt.com)
