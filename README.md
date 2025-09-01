@@ -183,10 +183,12 @@ Versões:
 ## Como Rodar Localmente:
 
 1.Clone o repositório
+
 git clone https://github.com/DudaAraujo14/Checkpoint.git
 cd Checkpoint
 
 2.Suba os serviços com Docker 
+
 docker-compose up --build
 
 3.Acesse:
