@@ -163,6 +163,15 @@ volumes:
   db_data:
 ---
 
+## 🗄️ Banco de Dados
+O banco de dados do projeto será o Oracle Database, uma solução robusta e escalável, 
+ideal para aplicações que demandam alta confiabilidade e performance. O Oracle SQL 
+será utilizado para gerenciar as informações dos problemas reportados pelos cidadãos, 
+como a localização, o tipo de problema e o status de resolução.
+A conexão com o banco de dados será feita a partir do backend em FastAPI, 
+utilizando um driver compatível com Python, como o cx_Oracle (ou o mais recente oracledb).
+---
+
 ## 🧮 Versões, Como Rodar e Próximos Passos
 
 Versões:
