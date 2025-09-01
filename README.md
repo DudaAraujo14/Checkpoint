@@ -98,37 +98,6 @@ flowchart TD
     Prefeitura((🏛️ Prefeitura)) -->|Dashboards| Monitoring
     Prefeitura -->|Acessa alertas| Frontend
 ```
-## Estrutura do MVP (projeto inicial)
-civixmind/
-├── backend/
-│   ├── app/
-│   │   ├── main.py        # FastAPI
-│   │   ├── models.py      # Modelos ORM
-│   │   ├── routes.py      # Rotas de API
-│   │   └── ai.py          # Integração OpenAI
-│   └── Dockerfile
-│
-├── frontend/
-│   ├── pages/
-│   │   ├── index.js       # Página inicial com mapa
-│   │   └── report.js      # Formulário de reportar problema
-│   ├── components/
-│   │   └── Map.js         # Leaflet mapa interativo
-│   └── Dockerfile
-│
-├── infra/
-│   ├── main.tf            # Terraform infra Azure
-│   ├── variables.tf
-│   └── outputs.tf
-│
-├── monitoring/
-│   ├── prometheus.yml
-│   └── grafana_dashboards.json
-│
-├── README.md
-└── docker-compose.yml
-
----
 
 ## 🧱 Rascunho da Solução
 
