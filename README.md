@@ -2,7 +2,7 @@
 
 **Turma:** 2TDSPS-2025  
 **Grupo:** FutureOps Lab  
-**Repositório:** 
+**Repositório:** (https://github.com/DudaAraujo14/Checkpoint.git)
 
 ## 👥 Integrantes do Grupo
 
@@ -162,7 +162,7 @@ civixmind/
 
 ## 💻 Código-Fonte do MVP
 
-📂 [Repositório com código-fonte e infraestrutura](https://github.com/futureops-lab/civixmind)
+📂 [Repositório com código-fonte e infraestrutura](https://github.com/DudaAraujo14/Checkpoint.git)
 
 ---
 
