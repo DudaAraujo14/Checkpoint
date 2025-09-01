@@ -100,7 +100,7 @@ flowchart TD
 ```
 ## Estrutura do MVP (projeto inicial)
 civixmind/
-│── backend/
+├── backend/
 │   ├── app/
 │   │   ├── main.py        # FastAPI
 │   │   ├── models.py      # Modelos ORM
@@ -108,7 +108,7 @@ civixmind/
 │   │   └── ai.py          # Integração OpenAI
 │   └── Dockerfile
 │
-│── frontend/
+├── frontend/
 │   ├── pages/
 │   │   ├── index.js       # Página inicial com mapa
 │   │   └── report.js      # Formulário de reportar problema
@@ -116,20 +116,21 @@ civixmind/
 │   │   └── Map.js         # Leaflet mapa interativo
 │   └── Dockerfile
 │
-│── infra/
+├── infra/
 │   ├── main.tf            # Terraform infra Azure
 │   ├── variables.tf
 │   └── outputs.tf
 │
-│── monitoring/
+├── monitoring/
 │   ├── prometheus.yml
 │   └── grafana_dashboards.json
 │
-│── README.md
-│── docker-compose.yml
+├── README.md
+└── docker-compose.yml
+
 ---
 
-##🧱 Rascunho da Solução
+## 🧱 Rascunho da Solução
 
 Cidadãos reportam problemas urbanos via app ou site.
 
