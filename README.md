@@ -8,8 +8,8 @@
 
 | Nome Completo     | RM      | Função       |
 |------------------ |---------|--------------|
-| Maria Eduarda     | 560944  | DEV HOM PRD  |
-
+| Maria Eduarda     | 560944  |  HOM PRD     |
+| Alane Rocha       | 561052  |    DEV       |
 ---
 
 ## 📝 Descrição da Solução
